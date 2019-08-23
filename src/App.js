@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './components/Nav';
 import List from './components/List';
 import Note from './components/Note';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -12,11 +13,15 @@ class App extends Component {
     };
   }
 
-toggleNote = () => {
-  this.setState({
-    showNote: ! this.state.showNote
-  });
-}
+  toggleNote = () => {
+    this.setState({
+      showNote: ! this.state.showNote
+    });
+  }
+
+  getNotes = () => {
+    axios.get('https://firehose-note-api.herokuapp.com/notes')
+  }
 
   render() {
     const { showNote } = this.state;
